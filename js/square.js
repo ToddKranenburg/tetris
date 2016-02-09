@@ -1,8 +1,9 @@
 (function () {
   var Tetris = window.Tetris = (window.Tetris || {});
-  var Square = Tetris.Square = function (position) {
+  var Square = Tetris.Square = function (position, board) {
     this.xPos = position[0];
     this.yPos = position[1];
+    this.board = board;
   };
 
   Square.prototype.willHit = function (square) {
@@ -15,7 +16,7 @@
 
   Square.prototype.willHitBottom = function (dim_y) {
     var bottom = dim_y || 20;
-    if ((this.yPos + 1) === bottom) {
+    if ((this.yPos + 1) >= bottom) {
       return true;
     } else {
       return false;
@@ -26,25 +27,41 @@
     this.yPos += 1;
   };
 
+
   Square.prototype.pivot = function (pivotSquare) {
-    var deltaX = this.xPos - pivotSquare.xPos;
-    var deltaY = this.yPos - pivotSquare.yPos;
-    this.xPos = pivotSquare.xPos + deltaY;
-    this.yPos = pivotSquare.yPos + deltaX;
+    var position = this.getPivotPosition(pivotSquare);
+    this.xPos = position[0];
+    this.yPos = position[1];
   };
 
-//there is a bug here...
-  Square.prototype.willPivotIntoASide = function (pivotSquare) {
-    var deltaX = this.xPos - pivotSquare.xPos;
-    var deltaY = this.yPos - pivotSquare.yPos;
-    var newX = pivotSquare.xPos + deltaY;
-    var newY = pivotSquare.yPos + deltaX;
 
-    if ((newX > 11 || newX < 0) || (newY > 19 || newY < 0)) {
+  Square.prototype.willPivotIntoASide = function (pivotSquare) {
+    var position = this.getPivotPosition(pivotSquare);
+
+    if (this.board.isOutOfBounds(position)) {
       return true;
     } else {
       return false;
     }
+  };
+
+  Square.prototype.willPivotIntoASquare = function (pivotSquare) {
+    var position = this.getPivotPosition(pivotSquare);
+
+    if (this.board.isOccupied(position)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  Square.prototype.getPivotPosition = function (pivotSquare) {
+    var deltaX = this.xPos - pivotSquare.xPos;
+    var deltaY = this.yPos - pivotSquare.yPos;
+    var newX = pivotSquare.xPos - deltaY;
+    var newY = pivotSquare.yPos + deltaX;
+
+    return [newX, newY];
   };
 
   Square.prototype.nudge = function (delta) {
@@ -53,8 +70,17 @@
   };
 
   Square.prototype.willHitASide = function (delta) {
-    var newX = this.xPos + delta[0];
-    if (newX > 11 || newX < 0) {
+    var position = [this.xPos + delta[0], this.yPos + delta[1]];
+    if (this.board.isOutOfBounds(position)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  Square.prototype.willHitASquare = function (delta) {
+    var position = [this.xPos + delta[0], this.yPos + delta[1]];
+    if (this.board.isOccupied(position)) {
       return true;
     } else {
       return false;

@@ -12,7 +12,7 @@
     this.intervalId = setInterval(function () {
       this.game.step();
       this.game.draw(ctx);
-    }.bind(this), 500);
+    }.bind(this), 200);
 
     this.bindKeyHandlers();
   };
@@ -37,7 +37,7 @@
     // key('s', function () {
     //   this.game.ship.power([0, 1]);
     // }.bind(this));
-    key('space', function () {
+    key('r', function () {
       this.game.board.rotate();
       this.game.draw(this.context);
     }.bind(this));
