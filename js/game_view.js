@@ -1,20 +1,22 @@
 (function () {
   var Tetris = window.Tetris = (window.Tetris || {});
 
-  var GameView = Tetris.GameView = function (game, ctx) {
+  var GameView = Tetris.GameView = function (game, ctx, explosionCtx) {
     this.game = game;
     this.context = ctx;
+    this.explosionContext = explosionCtx;
+    this.speed = 230;
   };
 
   GameView.prototype.start = function () {
-    this.game.draw(ctx);
+    this.game.draw(this.context, this.explosionContext);
     this.intervalId = setInterval(function () {
       if (this.game.step()) {
-        this.game.draw(ctx);
+        this.game.draw(this.context, this.explosionContext);
       } else {
         this.endGame();
       }
-    }.bind(this), 100);
+    }.bind(this), this.speed);
 
     this.bindKeyHandlers();
   };
@@ -25,6 +27,10 @@
     var dimY = this.game.DIM_Y;
     this.context.fillStyle = 'rgba(238, 232, 170, .6)';
     this.context.fillRect(0, 0, dimX, dimY);
+    this.context.font = "48px serif";
+    this.context.textAlign = "center";
+    this.context.fillStyle = "black";
+    this.context.fillText("Game Over", dimX/2, dimY/2);
   };
 
   GameView.prototype.pause = function () {

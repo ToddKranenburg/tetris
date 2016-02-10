@@ -8,9 +8,12 @@
   </head>
   <body>
     <h1>Tetris Game</h1>
-    <canvas id="game-canvas"></canvas>
+    <canvas id="game-canvas">
+      <canvas id="explosion-canvas"></canvas>
+    </canvas>
     <script src="./js/keymaster.js"></script>
     <script src="./js/square.js"></script>
+    <script src="./js/explosion.js"></script>
     <script src="./js/piece.js"></script>
     <script src="./js/i_piece.js"></script>
     <script src="./js/board.js"></script>
@@ -21,10 +24,13 @@
       var canvas = document.getElementById("game-canvas");
       canvas.height = window.innerHeight;
       canvas.width = window.innerWidth;
+      var explosionCanvas = document.getElementById("explosion-canvas");
+      explosionCanvas.height = window.innerHeight;
+      explosionCanvas.width = window.innerWidth;
       var ctx = canvas.getContext('2d');
+      var explosionCtx = explosionCanvas.getContext('2d');
       var game = new Tetris.Game();
-
-      var gameView = new Tetris.GameView(game, ctx);
+      var gameView = new Tetris.GameView(game, ctx, explosionCtx);
       gameView.start();
     </script>
   </body>

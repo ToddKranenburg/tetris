@@ -9,10 +9,10 @@
     this.DIM_Y = 30 * 20;
   };
 
-  Game.prototype.draw = function (ctx) {
+  Game.prototype.draw = function (ctx, explosionCtx) {
     ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
     ctx.strokeRect(0, 0, this.DIM_X, this.DIM_Y);
-    this.board.draw(ctx);
+    this.board.draw(ctx, explosionCtx);
   };
 
   Game.prototype.step = function () {

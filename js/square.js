@@ -4,6 +4,7 @@
     this.xPos = position[0];
     this.yPos = position[1];
     this.board = board;
+    this.color = null;
   };
 
   Square.prototype.setColor = function (color) {

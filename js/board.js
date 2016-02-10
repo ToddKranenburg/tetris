@@ -6,6 +6,7 @@
     var i = Math.floor(Math.random() * 7);
     this.movingPiece = new Tetris.Pieces[i](this);//change this when you add more pieces
     this.stationarySquares = {};
+    this.rowsToFlash = [];
   };
 
   Board.prototype.step = function () {
@@ -60,7 +61,16 @@
     return squares;
   };
 
-  Board.prototype.draw = function (ctx) {
+  Board.prototype.draw = function (ctx, explosionCtx) {
+    var rowsToFlash = this.rowsToFlash;
+    if (this.rowsToFlash.length > 0) {
+      window.requestAnimationFrame(function () {
+        this.flashRows(rowsToFlash, explosionCtx);
+      }.bind(this));
+
+      this.rowsToFlash = [];
+    }
+    // this.flashRows(this.rowsToFlash, ctx);
     this.movingPiece.getSquares().forEach(function (square) {
       square.draw(ctx);
     });
@@ -77,6 +87,7 @@
     keys.forEach(function (key) {
       var row = this.stationarySquares[key];
       if (this.rowIsFull(row)) {
+        this.rowsToFlash.push(row);
         deletedRowHeights.push(row[0].yPos);
         delete this.stationarySquares[key];
       }
@@ -89,6 +100,23 @@
       deletedRows++;
     }
   };
+
+  Board.prototype.flashRows = function (rows, ctx) {
+    var squares = [];
+    rows.forEach(function (row) {
+      row.forEach(function (square) {
+        squares.push(square);
+      });
+    });
+
+    var explosion = new Tetris.Explosion(squares, ctx);
+    explosion.createExplosion();
+
+    explosion.intervalId = window.setInterval(function () {
+      explosion.update(10);
+    }, 10);
+  };
+
 
   Board.prototype.shiftAllRows = function (deletedRowHeight) {
     var keys = Object.keys(this.stationarySquares);
