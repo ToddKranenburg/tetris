@@ -8,13 +8,23 @@
 
   GameView.prototype.start = function () {
     this.game.draw(ctx);
-
     this.intervalId = setInterval(function () {
-      this.game.step();
-      this.game.draw(ctx);
-    }.bind(this), 200);
+      if (this.game.step()) {
+        this.game.draw(ctx);
+      } else {
+        this.endGame();
+      }
+    }.bind(this), 100);
 
     this.bindKeyHandlers();
+  };
+
+  GameView.prototype.endGame = function () {
+    window.clearInterval(this.intervalId);
+    var dimX = this.game.DIM_X;
+    var dimY = this.game.DIM_Y;
+    this.context.fillStyle = 'rgba(238, 232, 170, .6)';
+    this.context.fillRect(0, 0, dimX, dimY);
   };
 
   GameView.prototype.pause = function () {

@@ -31,7 +31,10 @@
       this.stationarySquares[yPos].push(square);
     }.bind(this));
     this.destroyFullRows();
-    this.movingPiece = new Tetris.Pieces[i](this);
+    if (!this.gameIsOver()) {
+      var i = Math.floor(Math.random() * 7);
+      this.movingPiece = new Tetris.Pieces[i](this);
+    }
   };
 
   Board.prototype.pieceWillHit = function () {
@@ -128,6 +131,14 @@
     });
 
     return occupied;
+  };
+
+  Board.prototype.gameIsOver = function () {
+    if (this.stationarySquares[0]) {
+      return true;
+    }
+
+    return false;
   };
 
   Board.prototype.isOutOfBounds = function (position) {

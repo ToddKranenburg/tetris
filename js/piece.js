@@ -1,8 +1,20 @@
 (function () {
   var Tetris = window.Tetris = (window.Tetris || {});
+  COLORS = ['#FD0', '#6C0', '#09F', '#F30'];
+
   var Piece = Tetris.Piece = function (squares, board) {
-    this.squares = squares;
+    var i = Math.floor(Math.random() * COLORS.length);
+    this.color = COLORS[i];
+    this.addSquares(squares);
     this.board = board;
+  };
+
+  Piece.prototype.addSquares = function (squares) {
+    this.squares = [];
+    for (var i = 0; i < squares.length; i++) {
+      squares[i].setColor(this.color);
+      this.squares.push(squares[i]);
+    }
   };
 
   Piece.prototype.step = function () {

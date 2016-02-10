@@ -6,6 +6,10 @@
     this.board = board;
   };
 
+  Square.prototype.setColor = function (color) {
+    this.color = color;
+  };
+
   Square.prototype.willHit = function (square) {
     if ((this.xPos === square.xPos) && ((this.yPos + 1) === square.yPos)) {
       return true;
@@ -90,7 +94,7 @@
   Square.prototype.draw = function (ctx) {
     var x = this.xPos * 30;
     var y = this.yPos * 30;
-
+    ctx.fillStyle = this.color;
     ctx.fillRect(x, y, 30, 30);
   };
 })();

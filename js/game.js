@@ -16,6 +16,11 @@
   };
 
   Game.prototype.step = function () {
-    this.board.step();
+    if (this.board.gameIsOver()) {
+      return false;
+    } else {
+      this.board.step();
+      return true;
+    }
   };
 })();
