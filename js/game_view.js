@@ -5,24 +5,33 @@
     this.game = game;
     this.context = ctx;
     this.explosionContext = explosionCtx;
-    this.speed = 230;
+    this.speed = 300;
+    this.bound = false;
   };
 
   GameView.prototype.start = function () {
     this.game.draw(this.context, this.explosionContext);
     this.intervalId = setInterval(function () {
       if (this.game.step()) {
+        if (this.game.shouldLevelUp()) {
+          this.game.levelUp();
+          window.clearInterval(this.intervalId);
+          this.speed -= 25;
+          this.start();
+        }
         this.game.draw(this.context, this.explosionContext);
       } else {
         this.endGame();
       }
     }.bind(this), this.speed);
-
-    this.bindKeyHandlers();
+    if (!this.bound) {
+      this.bindKeyHandlers();
+    }
   };
 
   GameView.prototype.endGame = function () {
     window.clearInterval(this.intervalId);
+    this.unbindKeyHandlers();
     var dimX = this.game.DIM_X;
     var dimY = this.game.DIM_Y;
     this.context.fillStyle = 'rgba(238, 232, 170, .6)';
@@ -38,7 +47,6 @@
   };
 
   GameView.prototype.bindKeyHandlers = function () {
-
     key('a', function () {
       this.game.board.nudge("L");
       this.game.draw(this.context);
@@ -57,6 +65,16 @@
       this.game.board.rotate();
       this.game.draw(this.context);
     }.bind(this));
+
+    this.bound = true;
+  };
+
+  GameView.prototype.unbindKeyHandlers = function () {
+    key.unbind('a');
+    key.unbind('d');
+    key.unbind('r');
+
+    this.bound = false;
   };
 
 })();
