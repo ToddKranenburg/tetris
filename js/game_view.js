@@ -5,7 +5,7 @@
     this.game = game;
     this.context = ctx;
     this.explosionContext = explosionCtx;
-    this.speed = 300;
+    this.speed = 400;
     this.bound = false;
   };
 
@@ -16,7 +16,7 @@
         if (this.game.shouldLevelUp()) {
           this.game.levelUp();
           window.clearInterval(this.intervalId);
-          this.speed -= 25;
+          this.speed -= 50;
           this.start();
         }
         this.game.draw(this.context, this.explosionContext);
@@ -58,9 +58,9 @@
       this.game.board.nudge("R");
       this.game.draw(this.context);
     }.bind(this));
-    // key('s', function () {
-    //   this.game.ship.power([0, 1]);
-    // }.bind(this));
+    key('w', function () {
+      this.game.board.forceFall(this.context);
+    }.bind(this));
     key('r', function () {
       this.game.board.rotate();
       this.game.draw(this.context);
@@ -73,6 +73,7 @@
     key.unbind('a');
     key.unbind('d');
     key.unbind('r');
+    key.unbind('w');
 
     this.bound = false;
   };

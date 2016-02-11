@@ -26,6 +26,7 @@
   };
   OPiece.prototype = new SurrogatePiece();
 
+
   var SPiece = function (board) {
     var squares = [
       new Square([4, 1], board),
@@ -36,6 +37,7 @@
     Piece.call(this, squares, board);
   };
   SPiece.prototype = new SurrogatePiece();
+
 
   var ZPiece = function (board) {
     var squares = [
@@ -70,6 +72,7 @@
   };
   LPiece.prototype = new SurrogatePiece();
 
+
   var TPiece = function (board) {
     var squares = [
       new Square([4, 0], board),
@@ -80,6 +83,7 @@
     Piece.call(this, squares, board);
   };
   TPiece.prototype = new SurrogatePiece();
+
 
   Tetris.Pieces = {
     0: IPiece,

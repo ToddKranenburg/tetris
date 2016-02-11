@@ -36,6 +36,15 @@
     }
   };
 
+  Piece.prototype.moveTo = function (piece) {
+    for (var i = 0; i < this.squares.length; i++) {
+      oldSquare = this.squares[i];
+      newSquare = piece.squares[i];
+
+      oldSquare.moveTo(newSquare);
+    }
+  };
+
   Piece.prototype.nudge = function (direction) {
     var delta;
     switch(direction) {
@@ -101,6 +110,7 @@
 
     return false;
   };
+
   Piece.prototype.willHit = function (otherSquares) {
     for (var i = 0; i < otherSquares.length; i++) {
       for (var j = 0; j < this.squares.length; j++) {

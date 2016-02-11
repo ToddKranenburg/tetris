@@ -32,6 +32,11 @@
     this.yPos += 1;
   };
 
+  Square.prototype.moveTo = function (square) {
+    this.xPos = square.xPos;
+    this.yPos = square.yPos;
+  };
+
 
   Square.prototype.pivot = function (pivotSquare) {
     var position = this.getPivotPosition(pivotSquare);
@@ -98,4 +103,7 @@
     ctx.fillStyle = this.color;
     ctx.fillRect(x, y, 30, 30);
   };
+
+  var SurrogateSquare  = Tetris.SurrogateSquare = function () {};
+  SurrogateSquare.prototype = Square.prototype;
 })();

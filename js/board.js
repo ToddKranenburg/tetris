@@ -5,6 +5,8 @@
   var Board = Tetris.Board = function () {
     var i = Math.floor(Math.random() * 7);
     this.movingPiece = new Tetris.Pieces[i](this);//change this when you add more pieces
+    var squares = this.movingPiece.getSquares();
+    this.ghostPiece = new Tetris.GhostPiece(squares, this);
     this.stationarySquares = {};
     this.rowsToExplode = [];
   };
@@ -19,12 +21,19 @@
     return this.rowsToExplode.length;
   };
 
+  Board.prototype.forceFall = function (ctx) {
+    this.movingPiece.moveTo(this.ghostPiece);
+    this.draw(ctx);
+  };
+
   Board.prototype.nudge = function (direction) {
     this.movingPiece.nudge(direction);
+    this.ghostPiece.setSquares(this.movingPiece.getSquares());
   };
 
   Board.prototype.rotate = function () {
     this.movingPiece.rotate();
+    this.ghostPiece.setSquares(this.movingPiece.getSquares());
   };
 
   Board.prototype.pieceDidHit = function () {
@@ -37,6 +46,8 @@
     if (!this.gameIsOver()) {
       var i = Math.floor(Math.random() * 7);
       this.movingPiece = new Tetris.Pieces[i](this);
+      var squares = this.movingPiece.getSquares();
+      this.ghostPiece = new Tetris.GhostPiece(squares, this);
     }
   };
 
@@ -64,20 +75,28 @@
   };
 
   Board.prototype.draw = function (ctx, explosionCtx) {
+    ctx.clearRect(0, 0, 30 * 12, 30 * 20);
+    ctx.strokeRect(0, 0, 30 * 12, 30 * 20);
     var rowsToExplode = this.rowsToExplode;
     if (this.rowsToExplode.length > 0) {
+      // this.flashRows(rowsToExplode, explosionCtx);
       window.requestAnimationFrame(function () {
         this.flashRows(rowsToExplode, explosionCtx);
       }.bind(this));
 
       this.rowsToExplode = [];
     }
-    // this.flashRows(this.rowsToExplode, ctx);
     this.movingPiece.getSquares().forEach(function (square) {
       square.draw(ctx);
     });
-    var squares = this.getStationarySquares();
 
+    this.ghostPiece.resetSquares();
+    this.ghostPiece.moveToBottom();
+    this.ghostPiece.getSquares().forEach(function (square) {
+      square.drawGhost(ctx);
+    });
+
+    var squares = this.getStationarySquares();
     squares.forEach(function (square) {
       square.draw(ctx);
     });
