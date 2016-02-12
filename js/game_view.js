@@ -61,6 +61,10 @@
     key('w', function () {
       this.game.board.forceFall(this.context);
     }.bind(this));
+    key('s', function () {
+      this.game.board.step();
+      this.game.board.draw(this.context);
+    }.bind(this));
     key('r', function () {
       this.game.board.rotate();
       this.game.draw(this.context);
@@ -74,6 +78,7 @@
     key.unbind('d');
     key.unbind('r');
     key.unbind('w');
+    key.unbind('s');
 
     this.bound = false;
   };

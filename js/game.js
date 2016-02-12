@@ -12,8 +12,7 @@
   };
 
   Game.prototype.draw = function (ctx, explosionCtx) {
-    ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
-    ctx.strokeRect(0, 0, this.DIM_X, this.DIM_Y);
+
     this.board.draw(ctx, explosionCtx);
     ctx.font = "30px serif";
     ctx.fillStyle = "black";
@@ -34,7 +33,6 @@
   };
 
   Game.prototype.step = function () {
-
     if (this.board.gameIsOver()) {
       return false;
     } else {
