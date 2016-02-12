@@ -4,7 +4,10 @@
   margin: auto;
   padding-bottom: 50px;
 }
-#game-canvas {
+#game-canvas, #explosion-canvas {
   display: block;
-  margin: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }

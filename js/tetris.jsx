@@ -1,7 +1,8 @@
 var React = require('react'),
-  ReactDOM = require('react-dom');
+  ReactDOM = require('react-dom'),
+  GameView = require('./components/game_view');
 
-var Tetris = React.createComponent({
+var Tetris = React.createClass({
   getInitialState: function () {
     return ({playing: false});
   },
@@ -11,16 +12,19 @@ var Tetris = React.createComponent({
   },
 
   render: function () {
-    if (playing) {
-      return <GameView/>;
+    if (this.state.playing) {
+      return (
+        <GameView/>
+      );
     } else {
       return (
         <div className="intro">
-        <h1 className="intro-header">Welcome to Tetris!</h1>
-        <p className="intro-body">Use 'a' and 'd' to move the block left and right.</p>
-        <p className="intro-body">'w' moves the piece all the way down.</p>
-        <p className="intro-body">'s' makes the piece fall faster.</p>
-        <button onClick={this.playGame}>Start Playing!</button>
+          <h1 className="intro-header">Welcome to Tetris!</h1>
+          <h2 className="intro-body-header">Commands:</h2>
+          <p className="intro-body">'a' and 'd' to move the block left and right</p>
+          <p className="intro-body">'w' to drop the block to the bottom</p>
+          <p className="intro-body">'s' to speed the block up</p>
+          <button onClick={this.playGame}>Start Playing!</button>
         </div>
       );
     }
