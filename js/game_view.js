@@ -51,9 +51,6 @@
       this.game.board.nudge("L");
       this.game.draw(this.context);
     }.bind(this));
-    // key('w', function () {
-    //   this.game.ship.power([0, -1]);
-    // }.bind(this));
     key('d', function () {
       this.game.board.nudge("R");
       this.game.draw(this.context);
