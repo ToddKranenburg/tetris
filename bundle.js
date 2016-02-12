@@ -85,31 +85,41 @@
 	        React.createElement(
 	          'h1',
 	          { className: 'intro-header' },
-	          'Welcome to Tetris!'
+	          'TETRIS'
 	        ),
 	        React.createElement(
-	          'h2',
-	          { className: 'intro-body-header' },
-	          'Commands:'
-	        ),
-	        React.createElement(
-	          'p',
+	          'ul',
 	          { className: 'intro-body' },
-	          '\'a\' and \'d\' to move the block left and right'
-	        ),
-	        React.createElement(
-	          'p',
-	          { className: 'intro-body' },
-	          '\'w\' to drop the block to the bottom'
-	        ),
-	        React.createElement(
-	          'p',
-	          { className: 'intro-body' },
-	          '\'s\' to speed the block up'
+	          React.createElement(
+	            'li',
+	            { className: 'intro-body-element' },
+	            React.createElement('img', { className: 'key', src: 'images/a.gif' }),
+	            ' and ',
+	            React.createElement('img', { className: 'key', src: 'images/d.gif' }),
+	            ' move the block left and right'
+	          ),
+	          React.createElement(
+	            'li',
+	            { className: 'intro-body-element' },
+	            React.createElement('img', { className: 'key', src: 'images/w.gif' }),
+	            ' drops the block to the bottom'
+	          ),
+	          React.createElement(
+	            'li',
+	            { className: 'intro-body-element' },
+	            React.createElement('img', { className: 'key', src: 'images/s.gif' }),
+	            ' speeds up the block'
+	          ),
+	          React.createElement(
+	            'li',
+	            { className: 'intro-body-element' },
+	            React.createElement('img', { className: 'key', src: 'images/r.gif' }),
+	            ' rotates the block'
+	          )
 	        ),
 	        React.createElement(
 	          'button',
-	          { onClick: this.playGame },
+	          { onClick: this.playGame, className: 'game-button' },
 	          'Start Playing!'
 	        )
 	      );
@@ -19896,21 +19906,25 @@
 	        ),
 	        React.createElement(
 	          'button',
-	          { onClick: this.newGame },
-	          'Play Again?'
+	          { onClick: this.newGame, className: 'game-button' },
+	          'PLAY AGAIN'
 	        )
 	      );
 	    } else {
-	      var buttonContent = this.state.paused ? "Play" : "Pause";
+	      var buttonContent = this.state.paused ? "RESUME" : "PAUSE";
 	      content = React.createElement(
-	        'button',
-	        { className: 'pause-button', onClick: this.togglePause },
-	        buttonContent
+	        'div',
+	        { className: 'pause-button' },
+	        React.createElement(
+	          'button',
+	          { className: 'game-button', onClick: this.togglePause },
+	          buttonContent
+	        )
 	      );
 	    }
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'game-view' },
 	      React.createElement('canvas', { id: 'game-canvas' }),
 	      React.createElement('canvas', { id: 'explosion-canvas' }),
 	      scoreboard,
@@ -19938,8 +19952,6 @@
 	
 	Game.prototype.draw = function (ctx, explosionCtx) {
 	  this.board.draw(ctx, explosionCtx);
-	  ctx.font = "30px serif";
-	  ctx.fillStyle = "black";
 	};
 	
 	Game.prototype.shouldLevelUp = function () {
@@ -20051,6 +20063,8 @@
 	
 	Board.prototype.draw = function (ctx, explosionCtx) {
 	  ctx.clearRect(0, 0, 30 * 12, 30 * 20);
+	  ctx.strokeStyle = "#01cccc";
+	  ctx.lineWidth = 4;
 	  ctx.strokeRect(0, 0, 30 * 12, 30 * 20);
 	  var rowsToExplode = this.rowsToExplode;
 	  if (this.rowsToExplode.length > 0) {

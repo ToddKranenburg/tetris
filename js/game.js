@@ -11,8 +11,6 @@ var Game = function () {
 
 Game.prototype.draw = function (ctx, explosionCtx) {
   this.board.draw(ctx, explosionCtx);
-  ctx.font = "30px serif";
-  ctx.fillStyle = "black";
 };
 
 Game.prototype.shouldLevelUp = function () {

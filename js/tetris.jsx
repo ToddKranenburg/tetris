@@ -25,12 +25,14 @@ var Tetris = React.createClass({
     } else {
       content = (
         <div className="intro">
-          <h1 className="intro-header">Welcome to Tetris!</h1>
-          <h2 className="intro-body-header">Commands:</h2>
-          <p className="intro-body">'a' and 'd' to move the block left and right</p>
-          <p className="intro-body">'w' to drop the block to the bottom</p>
-          <p className="intro-body">'s' to speed the block up</p>
-          <button onClick={this.playGame}>Start Playing!</button>
+          <h1 className="intro-header">TETRIS</h1>
+          <ul className="intro-body">
+          <li className="intro-body-element"><img className="key" src="images/a.gif"/> and <img className="key" src="images/d.gif"/> move the block left and right</li>
+          <li className="intro-body-element"><img className="key" src="images/w.gif"/> drops the block to the bottom</li>
+          <li className="intro-body-element"><img className="key" src="images/s.gif"/> speeds up the block</li>
+          <li className="intro-body-element"><img className="key" src="images/r.gif"/> rotates the block</li>
+          </ul>
+          <button onClick={this.playGame} className="game-button">Start Playing!</button>
         </div>
       );
     }

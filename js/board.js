@@ -78,6 +78,8 @@ Board.prototype.getStationarySquares = function () {
 
 Board.prototype.draw = function (ctx, explosionCtx) {
   ctx.clearRect(0, 0, 30 * 12, 30 * 20);
+  ctx.strokeStyle = "#01cccc";
+  ctx.lineWidth = 4;
   ctx.strokeRect(0, 0, 30 * 12, 30 * 20);
   var rowsToExplode = this.rowsToExplode;
   if (this.rowsToExplode.length > 0) {

@@ -144,19 +144,21 @@ var GameView = React.createClass({
       content = (
         <div className="game-over">
           <h2>Game Over</h2>
-          <button onClick={this.newGame}>Play Again?</button>
+          <button onClick={this.newGame} className="game-button">PLAY AGAIN</button>
         </div>
       );
     } else {
-      var buttonContent = this.state.paused ? "Play" : "Pause";
+      var buttonContent = this.state.paused ? "RESUME" : "PAUSE";
       content = (
-        <button className="pause-button" onClick={this.togglePause}>
-          {buttonContent}
-        </button>
+        <div className="pause-button">
+          <button className="game-button" onClick={this.togglePause}>
+            {buttonContent}
+          </button>
+        </div>
       );
     }
     return (
-      <div>
+      <div className="game-view">
         <canvas id="game-canvas">
         </canvas>
         <canvas id="explosion-canvas">

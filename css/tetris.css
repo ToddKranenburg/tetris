@@ -1,3 +1,91 @@
+/* RESET */
+body, div, ul, li, article, h1, h2, h3, input, a, p, textarea, button {
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
+
+  text-decoration: none;
+  list-style: none;
+  background: transparent;
+  font: inherit;
+  box-sizing: inherit;
+  font-family: inherit;
+}
+
+body {
+  font-family: helvetica;
+}
+
+
+.intro {
+  display: block;
+  width: 450px;
+  height: 500px;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.about-me {
+  position: absolute;
+  width: 100%;
+  background-color: #ccc;
+  bottom: 0px;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.intro-header {
+  display: block;
+  padding: 40px;
+  font-weight: bolder;
+  font-size: 50px;
+  color: #7FFF00;
+  text-shadow: 5px 5px 0px #01cccc,
+                 10px 10px 0px #00bdbd;
+}
+
+.game-button {
+  margin-top: 50px;
+  background: #00bdbd;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: #7FFF00;
+  font-weight: bolder;
+  box-shadow: 5px 5px 0px #01cccc,
+                 10px 10px 0px #7FFF00;
+}
+
+.game-button:hover {
+  box-shadow: 2px 2px 0px #01cccc,
+                 4px 4px 0px #7FFF00;
+  transform: translateX(6px) translateY(6px);
+
+  cursor: pointer;
+}
+
+
+.key {
+  width: 30px;
+
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.intro-body-element {
+  color: #01cccc;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+.intro-body {
+  margin: 20px;
+}
+
+
 .header {
   display: block;
   text-align: center;
@@ -7,7 +95,45 @@
 #game-canvas, #explosion-canvas {
   display: block;
   position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.game-view {
+  display: block;
+  position: absolute;
+  top: 20px;
   left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%);
+  width: 600px;
+  height: 620px;
+  border: 4px solid #7FFF00;
+}
+
+.scoreboard {
+  display: block;
+  position: absolute;
+  color: #01cccc;
+  font-weight: bold;
+  text-align: center;
+  top: 40px;
+  font-size: 24px;
+  width: 240px;
+  right: 0px;
+}
+
+.score, .level {
+  padding: 10px;
+}
+
+.pause-button {
+  position: absolute;
+  width: 240px;
+  right: 0px;
+  top: 200px;
+}
+
+.pause-button > .game-button {
+  display: block;
+  margin: auto;
 }
