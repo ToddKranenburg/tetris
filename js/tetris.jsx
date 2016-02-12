@@ -12,12 +12,18 @@ var Tetris = React.createClass({
   },
 
   render: function () {
+    var content;
+    var aboutMe = (
+      <div className="about-me">
+        Created by Todd Kranenburg
+        <a href="https://www.linkedin.com/in/toddkranenburg" className="my-link">Linkedin</a>
+        <a href="https://github.com/ToddKranenburg/tetris" className="my-link">Github Repo</a>
+      </div>
+    );
     if (this.state.playing) {
-      return (
-        <GameView/>
-      );
+      content = <GameView/>;
     } else {
-      return (
+      content = (
         <div className="intro">
           <h1 className="intro-header">Welcome to Tetris!</h1>
           <h2 className="intro-body-header">Commands:</h2>
@@ -28,6 +34,12 @@ var Tetris = React.createClass({
         </div>
       );
     }
+    return (
+      <div>
+      {content}
+      {aboutMe}
+      </div>
+    );
   }
 });
 
