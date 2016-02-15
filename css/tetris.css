@@ -33,17 +33,6 @@ ul {
   text-align: center;
 }
 
-.about-me {
-  position: absolute;
-  width: 100%;
-  background-color: #ccc;
-  top: 100%;
-  transform: translateY(-100%);
-  padding: 10px;
-  text-align: center;
-  font-size: 14px;
-  height: 20px;
-}
 
 
 
@@ -168,21 +157,24 @@ ul {
 
 .my-image {
   width: 25px;
-  padding: 20px;
+  padding: 10px;
+
 }
 
-.about-me-header {
+.about-me-content {
   display: block;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 440px;
+  bottom: 50px;
+  left: 10px;
 }
 
-.about-me-icons {
-  display: block;
+.about-me-logos {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 440px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.about-me-logos a {
+  display: inline;
 }

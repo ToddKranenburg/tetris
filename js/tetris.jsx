@@ -15,11 +15,13 @@ var Tetris = React.createClass({
     var content;
     var aboutMe = (
       <div className="about-me">
-      <div className="about-me-header">Created by Todd Kranenburg</div>
-      <div className="about-me-icons">
-        <a href="https://www.linkedin.com/in/toddkranenburg" className="my-link"><img className="my-image" src="./images/linkedin-icon.png"></img></a>
-        <a href="https://github.com/ToddKranenburg/tetris" className="my-link"><img className="my-image" src="./images/git-icon.png"></img></a>
-      </div>
+        <div className="about-me-content">
+          <div className="about-me-header">Created by Todd Kranenburg</div>
+          <div className="about-me-logos">
+            <a href="https://www.linkedin.com/in/toddkranenburg" className="my-link"><img className="my-image" src="./images/linkedin-icon.png"></img></a>
+            <a href="https://github.com/ToddKranenburg/tetris" className="my-link"><img className="my-image" src="./images/git-icon.png"></img></a>
+            </div>
+        </div>
       </div>
     );
     if (this.state.playing) {

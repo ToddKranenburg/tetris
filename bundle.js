@@ -66,21 +66,25 @@
 	      { className: 'about-me' },
 	      React.createElement(
 	        'div',
-	        { className: 'about-me-header' },
-	        'Created by Todd Kranenburg'
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'about-me-icons' },
+	        { className: 'about-me-content' },
 	        React.createElement(
-	          'a',
-	          { href: 'https://www.linkedin.com/in/toddkranenburg', className: 'my-link' },
-	          React.createElement('img', { className: 'my-image', src: './images/linkedin-icon.png' })
+	          'div',
+	          { className: 'about-me-header' },
+	          'Created by Todd Kranenburg'
 	        ),
 	        React.createElement(
-	          'a',
-	          { href: 'https://github.com/ToddKranenburg/tetris', className: 'my-link' },
-	          React.createElement('img', { className: 'my-image', src: './images/git-icon.png' })
+	          'div',
+	          { className: 'about-me-logos' },
+	          React.createElement(
+	            'a',
+	            { href: 'https://www.linkedin.com/in/toddkranenburg', className: 'my-link' },
+	            React.createElement('img', { className: 'my-image', src: './images/linkedin-icon.png' })
+	          ),
+	          React.createElement(
+	            'a',
+	            { href: 'https://github.com/ToddKranenburg/tetris', className: 'my-link' },
+	            React.createElement('img', { className: 'my-image', src: './images/git-icon.png' })
+	          )
 	        )
 	      )
 	    );
