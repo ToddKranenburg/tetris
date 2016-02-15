@@ -64,16 +64,24 @@
 	    var aboutMe = React.createElement(
 	      'div',
 	      { className: 'about-me' },
-	      'Created by Todd Kranenburg',
 	      React.createElement(
-	        'a',
-	        { href: 'https://www.linkedin.com/in/toddkranenburg', className: 'my-link' },
-	        'Linkedin'
+	        'div',
+	        { className: 'about-me-header' },
+	        'Created by Todd Kranenburg'
 	      ),
 	      React.createElement(
-	        'a',
-	        { href: 'https://github.com/ToddKranenburg/tetris', className: 'my-link' },
-	        'Github Repo'
+	        'div',
+	        { className: 'about-me-icons' },
+	        React.createElement(
+	          'a',
+	          { href: 'https://www.linkedin.com/in/toddkranenburg', className: 'my-link' },
+	          React.createElement('img', { className: 'my-image', src: './images/linkedin-icon.png' })
+	        ),
+	        React.createElement(
+	          'a',
+	          { href: 'https://github.com/ToddKranenburg/tetris', className: 'my-link' },
+	          React.createElement('img', { className: 'my-image', src: './images/git-icon.png' })
+	        )
 	      )
 	    );
 	    if (this.state.playing) {
@@ -19891,7 +19899,7 @@
 	          'h2',
 	          { className: 'level' },
 	          'Level: ',
-	          this.state.game.level
+	          this.state.game.level + 1
 	        )
 	      );
 	    }
@@ -19901,7 +19909,7 @@
 	        { className: 'game-over' },
 	        React.createElement(
 	          'h2',
-	          null,
+	          { className: 'game-over-header' },
 	          'Game Over'
 	        ),
 	        React.createElement(

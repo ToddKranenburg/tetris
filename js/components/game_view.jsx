@@ -135,7 +135,7 @@ var GameView = React.createClass({
             Score: {this.state.game.score}
           </h2>
           <h2 className="level">
-            Level: {this.state.game.level}
+            Level: {this.state.game.level + 1}
           </h2>
         </div>
       );
@@ -143,7 +143,7 @@ var GameView = React.createClass({
     if (this.state.gameOver) {
       content = (
         <div className="game-over">
-          <h2>Game Over</h2>
+          <h2 className="game-over-header">Game Over</h2>
           <button onClick={this.newGame} className="game-button">PLAY AGAIN</button>
         </div>
       );

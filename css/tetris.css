@@ -16,13 +16,18 @@ body {
   font-family: helvetica;
 }
 
+ul {
+  list-style: none;
+  display: block;
+}
+
 
 .intro {
   display: block;
   width: 450px;
   height: 500px;
   position: absolute;
-  top: 100px;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -32,11 +37,15 @@ body {
   position: absolute;
   width: 100%;
   background-color: #ccc;
-  bottom: 0px;
+  top: 100%;
+  transform: translateY(-100%);
   padding: 10px;
   text-align: center;
   font-size: 14px;
+  height: 20px;
 }
+
+
 
 .intro-header {
   display: block;
@@ -136,4 +145,44 @@ body {
 .pause-button > .game-button {
   display: block;
   margin: auto;
+}
+
+.game-over {
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 600px;
+  height: 620px;
+  background-color: rgba(65, 105, 255, 0.5);
+}
+
+.game-over-header {
+  display: block;
+  color: #7FFF00;
+  font-weight: bolder;
+  font-size: 50px;
+  padding-top: 150px;
+}
+
+.my-image {
+  width: 25px;
+  padding: 20px;
+}
+
+.about-me-header {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 440px;
+}
+
+.about-me-icons {
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 440px;
 }
