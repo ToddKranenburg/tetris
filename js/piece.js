@@ -2,7 +2,7 @@ COLORS = ['#FD0', '#6C0', '#09F', '#F30'];
 
 var Piece = function (squares, board) {
   var i = Math.floor(Math.random() * COLORS.length);
-  this.color = COLORS[i];
+  // this.color = COLORS[i];
   this.addSquares(squares);
   this.board = board;
 };
