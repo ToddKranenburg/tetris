@@ -26,9 +26,13 @@ Piece.prototype.getSquares = function () {
 };
 
 Piece.prototype.rotate = function () {
-  var pivotSquare = this.squares[0];
+  var midpoint = this.squares.length / 2;
+  var pivotSquare = this.squares[midpoint];
   if (this.rotationIsInBounds()) {
-    for (var i = 1; i < (this.squares.length); i++) {
+    for (var i = 0; i < (this.squares.length); i++) {
+      if (i === midpoint) {
+        continue;
+      }
       this.squares[i].pivot(pivotSquare);
     }
   }
