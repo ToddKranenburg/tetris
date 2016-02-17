@@ -20,7 +20,7 @@ var Tetris = React.createClass({
           <div className="about-me-logos">
             <a href="https://www.linkedin.com/in/toddkranenburg" className="my-link"><img className="my-image" src="./images/linkedin-icon.png"></img></a>
             <a href="https://github.com/ToddKranenburg/tetris" className="my-link"><img className="my-image" src="./images/git-icon.png"></img></a>
-            <a href="https://toddkranenburg.com" className="my-link"><img className="my-image" src="./images/portfolio-icon.png"></img></a>
+            <a href="http://toddkranenburg.com" className="my-link"><img className="my-image" src="./images/portfolio-icon.png"></img></a>
             </div>
         </div>
       </div>
