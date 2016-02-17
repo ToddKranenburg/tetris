@@ -87,7 +87,7 @@
 	          ),
 	          React.createElement(
 	            'a',
-	            { href: 'https://toddkranenburg.com', className: 'my-link' },
+	            { href: 'http://toddkranenburg.com', className: 'my-link' },
 	            React.createElement('img', { className: 'my-image', src: './images/portfolio-icon.png' })
 	          )
 	        )
