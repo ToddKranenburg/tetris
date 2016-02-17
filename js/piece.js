@@ -87,9 +87,13 @@ Piece.prototype.deltaIsUnoccupied = function (delta) {
 };
 
 Piece.prototype.rotationIsInBounds = function () {
-  var pivotSquare = this.squares[0];
+  var midpoint = this.squares.length / 2;
+  var pivotSquare = this.squares[midpoint];
 
-  for (var i = 1; i < this.squares.length; i++) {
+  for (var i = 0; i < this.squares.length; i++) {
+    if (i == midpoint) {
+      continue;
+    }
     var square = this.squares[i];
     if (square.willPivotIntoASide(pivotSquare)) {
       return false;

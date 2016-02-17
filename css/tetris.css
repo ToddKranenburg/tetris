@@ -67,10 +67,10 @@ ul {
 
 
 .key {
-  width: 30px;
+  height: 30px;
 
-  margin-left: 3px;
-  margin-right: 3px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .intro-body-element {
@@ -157,19 +157,14 @@ ul {
 
 .my-image {
   width: 25px;
-  padding: 10px;
+  margin: 20px;
 
 }
 
-.about-me-content {
+.about-me {
   display: block;
   position: absolute;
-  bottom: 50px;
-  left: 10px;
-}
-
-.about-me-logos {
-  position: absolute;
+  top: 660px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
