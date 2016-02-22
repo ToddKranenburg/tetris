@@ -119,7 +119,7 @@
 	            'li',
 	            { className: 'intro-body-element' },
 	            React.createElement('img', { className: 'key', src: 'images/space.png' }),
-	            ' (spacebar) sends the block to the bottom'
+	            ' sends the block to the bottom'
 	          ),
 	          React.createElement(
 	            'li',
