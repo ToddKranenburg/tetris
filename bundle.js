@@ -118,8 +118,8 @@
 	          React.createElement(
 	            'li',
 	            { className: 'intro-body-element' },
-	            React.createElement('img', { className: 'key', src: 'images/up.png' }),
-	            ' sends the block to the bottom'
+	            React.createElement('img', { className: 'key', src: 'images/space.png' }),
+	            ' (spacebar) sends the block to the bottom'
 	          ),
 	          React.createElement(
 	            'li',
@@ -130,7 +130,7 @@
 	          React.createElement(
 	            'li',
 	            { className: 'intro-body-element' },
-	            React.createElement('img', { className: 'key', src: 'images/enter.png' }),
+	            React.createElement('img', { className: 'key', src: 'images/up.png' }),
 	            ' rotates the block'
 	          )
 	        ),
@@ -19855,14 +19855,14 @@
 	      game.board.nudge("R");
 	      game.draw(ctx);
 	    }.bind(this));
-	    key('up', function () {
+	    key('space', function () {
 	      game.board.forceFall(ctx);
 	    }.bind(this));
 	    key('down', function () {
 	      game.board.step();
 	      game.board.draw(ctx);
 	    }.bind(this));
-	    key('enter', function () {
+	    key('up', function () {
 	      game.board.rotate();
 	      game.draw(ctx);
 	    }.bind(this));
@@ -19875,7 +19875,7 @@
 	    key.unbind('right');
 	    key.unbind('up');
 	    key.unbind('down');
-	    key.unbind('enter');
+	    key.unbind('space');
 	
 	    this.bound = false;
 	  },
