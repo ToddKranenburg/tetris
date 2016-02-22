@@ -33,7 +33,7 @@ var Tetris = React.createClass({
           <h1 className="intro-header">TETRIS</h1>
           <ul className="intro-body">
           <li className="intro-body-element"><img className="key" src="images/left.png"/> and <img className="key" src="images/right.png"/> move the block left and right</li>
-          <li className="intro-body-element"><img className="key" src="images/space.png"/> (spacebar) sends the block to the bottom</li>
+          <li className="intro-body-element"><img className="key" src="images/space.png"/> sends the block to the bottom</li>
           <li className="intro-body-element"><img className="key" src="images/down.png"/> speeds up the block</li>
           <li className="intro-body-element"><img className="key" src="images/up.png"/> rotates the block</li>
           </ul>

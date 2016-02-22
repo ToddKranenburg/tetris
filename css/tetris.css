@@ -24,7 +24,7 @@ ul {
 
 .intro {
   display: block;
-  width: 560px;
+  width: 620px;
   height: 500px;
   position: absolute;
   top: 50px;
@@ -67,7 +67,7 @@ ul {
 
 
 .key {
-  height: 30px;
+  height: 40px;
 
   margin-left: 5px;
   margin-right: 5px;
