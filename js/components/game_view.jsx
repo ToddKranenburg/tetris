@@ -88,14 +88,14 @@ var GameView = React.createClass({
       game.board.nudge("R");
       game.draw(ctx);
     }.bind(this));
-    key('up', function () {
+    key('space', function () {
       game.board.forceFall(ctx);
     }.bind(this));
     key('down', function () {
       game.board.step();
       game.board.draw(ctx);
     }.bind(this));
-    key('enter', function () {
+    key('up', function () {
       game.board.rotate();
       game.draw(ctx);
     }.bind(this));
@@ -108,7 +108,7 @@ var GameView = React.createClass({
     key.unbind('right');
     key.unbind('up');
     key.unbind('down');
-    key.unbind('enter');
+    key.unbind('space');
 
     this.bound = false;
   },

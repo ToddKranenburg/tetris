@@ -24,7 +24,7 @@ ul {
 
 .intro {
   display: block;
-  width: 450px;
+  width: 560px;
   height: 500px;
   position: absolute;
   top: 50px;
@@ -152,7 +152,7 @@ ul {
   color: #7FFF00;
   font-weight: bolder;
   font-size: 50px;
-  padding-top: 150px;
+  padding-top: 200px;
 }
 
 .my-image {

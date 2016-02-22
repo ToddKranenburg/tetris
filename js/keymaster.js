@@ -93,7 +93,6 @@
     // for each potential shortcut
     for (i = 0; i < _handlers[key].length; i++) {
       handler = _handlers[key][i];
-
       // see if it's in the current scope
       if(handler.scope == scope || handler.scope == 'all'){
         // check if modifiers match if any
@@ -103,8 +102,10 @@
             (_mods[k] && index(handler.mods, +k) == -1)) modifiersMatch = false;
         // call the handler and stop the event if neccessary
         if((handler.mods.length == 0 && !_mods[16] && !_mods[18] && !_mods[17] && !_mods[91]) || modifiersMatch){
-          if(handler.method(event, handler)===false){
-            if(event.preventDefault) event.preventDefault();
+          if(!handler.method(event, handler)){
+            if(event.preventDefault) {
+              event.preventDefault();
+            }
               else event.returnValue = false;
             if(event.stopPropagation) event.stopPropagation();
             if(event.cancelBubble) event.cancelBubble = true;
@@ -144,7 +145,6 @@
       method = scope;
       scope = 'all';
     }
-
     // for each shortcut
     for (var i = 0; i < keys.length; i++) {
       // set modifier keys if any
