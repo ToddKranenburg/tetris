@@ -19908,7 +19908,11 @@
 	    if (this.state.game) {
 	      var score = this.state.game.score;
 	      var highScore = this.state.highScore;
-	      highScore = highScore > score ? highScore : score;
+	      if (highScore > score) {
+	        highScore = highScore;
+	      } else {
+	        highScore = score;
+	      }
 	      scoreboard = React.createElement(
 	        'div',
 	        { className: 'scoreboard' },
