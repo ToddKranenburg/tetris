@@ -19895,16 +19895,24 @@
 	    ctx.fillStyle = 'rgba(238, 232, 170, .6)';
 	    ctx.fillRect(0, 0, window.Tetris.dimX, window.Tetris.dimY);
 	    var highScore = this.state.highScore;
-	    if (this.state.game.score > highScore) {
-	      highScore = this.state.game.score;
+	    var highScoreCookie = document.cookie.replace(/(?:(?:^|.*;\s*)tetrisHighScore\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+	    if (highScoreCookie.length === 0 || highScore > parseInt(highScoreCookie)) {
+	      document.cookie = "tetrisHighScore=" + highScore;
 	    }
-	    document.cookie = "tetrisHighScore=" + highScore;
+	
 	    this.setState({ gameOver: true, highScore: highScore });
 	  },
 	
 	  render: function () {
 	    var content, scoreboard;
 	    if (this.state.game) {
+	      var score = this.state.game.score;
+	      var highScore = this.state.highScore;
+	      if (highScore > score) {
+	        highScore = highScore;
+	      } else {
+	        highScore = score;
+	      }
 	      scoreboard = React.createElement(
 	        'div',
 	        { className: 'scoreboard' },
@@ -19912,7 +19920,7 @@
 	          'h2',
 	          { className: 'score' },
 	          'Score: ',
-	          this.state.game.score
+	          score
 	        ),
 	        React.createElement(
 	          'h2',
@@ -19924,7 +19932,7 @@
 	          'h2',
 	          { className: 'level' },
 	          'High Score: ',
-	          this.state.highScore
+	          highScore
 	        )
 	      );
 	    }
