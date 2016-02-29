@@ -127,7 +127,13 @@ var GameView = React.createClass({
     var ctx = this.state.ctx;
     ctx.fillStyle = 'rgba(238, 232, 170, .6)';
     ctx.fillRect(0, 0, window.Tetris.dimX, window.Tetris.dimY);
+    var score = this.state.game.score;
     var highScore = this.state.highScore;
+    if (highScore > score) {
+      highScore = highScore;
+    } else {
+      highScore = score;
+    }
     var highScoreCookie = document.cookie.replace(/(?:(?:^|.*;\s*)tetrisHighScore\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     if (highScoreCookie.length === 0 || highScore > parseInt(highScoreCookie)) {
       document.cookie = "tetrisHighScore=" + highScore;
