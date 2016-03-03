@@ -23,9 +23,9 @@ Board.prototype.step = function () {
   return this.rowsToExplode.length;
 };
 
-Board.prototype.forceFall = function (ctx) {
+Board.prototype.forceFall = function (ctx, expCtx) {
   this.movingPiece.moveTo(this.ghostPiece);
-  this.draw(ctx);
+  this.draw(ctx, expCtx);
 };
 
 Board.prototype.nudge = function (direction) {

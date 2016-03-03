@@ -80,24 +80,25 @@ var GameView = React.createClass({
   bindKeyHandlers: function () {
     var game = this.state.game;
     var ctx = this.state.ctx;
+    var expCtx = this.state.explosionCtx;
     key('left', function () {
       game.board.nudge("L");
-      game.draw(ctx);
+      game.draw(ctx, expCtx);
     }.bind(this));
     key('right', function () {
       game.board.nudge("R");
-      game.draw(ctx);
+      game.draw(ctx, expCtx);
     }.bind(this));
     key('space', function () {
-      game.board.forceFall(ctx);
+      game.board.forceFall(ctx, expCtx);
     }.bind(this));
     key('down', function () {
       game.board.step();
-      game.board.draw(ctx);
+      game.board.draw(ctx, expCtx);
     }.bind(this));
     key('up', function () {
       game.board.rotate();
-      game.draw(ctx);
+      game.draw(ctx, expCtx);
     }.bind(this));
 
     this.bound = true;
