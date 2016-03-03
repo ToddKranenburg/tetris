@@ -19847,24 +19847,25 @@
 	  bindKeyHandlers: function () {
 	    var game = this.state.game;
 	    var ctx = this.state.ctx;
+	    var expCtx = this.state.explosionCtx;
 	    key('left', function () {
 	      game.board.nudge("L");
-	      game.draw(ctx);
+	      game.draw(ctx, expCtx);
 	    }.bind(this));
 	    key('right', function () {
 	      game.board.nudge("R");
-	      game.draw(ctx);
+	      game.draw(ctx, expCtx);
 	    }.bind(this));
 	    key('space', function () {
-	      game.board.forceFall(ctx);
+	      game.board.forceFall(ctx, expCtx);
 	    }.bind(this));
 	    key('down', function () {
 	      game.board.step();
-	      game.board.draw(ctx);
+	      game.board.draw(ctx, expCtx);
 	    }.bind(this));
 	    key('up', function () {
 	      game.board.rotate();
-	      game.draw(ctx);
+	      game.draw(ctx, expCtx);
 	    }.bind(this));
 	
 	    this.bound = true;
@@ -20055,9 +20056,9 @@
 	  return this.rowsToExplode.length;
 	};
 	
-	Board.prototype.forceFall = function (ctx) {
+	Board.prototype.forceFall = function (ctx, expCtx) {
 	  this.movingPiece.moveTo(this.ghostPiece);
-	  this.draw(ctx);
+	  this.draw(ctx, expCtx);
 	};
 	
 	Board.prototype.nudge = function (direction) {
@@ -20708,6 +20709,7 @@
 	
 	Explosion.prototype.update = function (frameDelay) {
 	  this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+	
 	  var dimX = 30 * 12;
 	  var dimY = 30 * 20;
 	  if (this.reps >= 200) {

@@ -77,6 +77,7 @@ Explosion.prototype.createExplosion = function () {
 
 Explosion.prototype.update = function (frameDelay) {
   this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+  
   var dimX = 30 * 12;
   var dimY = 30*20;
   if (this.reps >= 200) {
