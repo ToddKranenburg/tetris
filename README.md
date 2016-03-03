@@ -4,7 +4,7 @@ A web-browser game in the style of the timeless arcade game. Check it out [here]
 
 [tetris]: http://toddkranenburg.github.io/tetris/
 
-![alt tag](https://raw.githubusercontent.com/ToddKranenburg/tetris/master/docs/screen-shot.png)
+[![alt tag](https://raw.githubusercontent.com/ToddKranenburg/tetris/master/docs/screen-shot.png)](http://toddkranenburg.github.io/tetris/)
 
 ## Game Play
 - [ ] Falling blocks stack one onto the other
